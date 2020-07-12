@@ -3,6 +3,8 @@ import { INestApplication } from '@nestjs/common'
 import * as request from 'supertest'
 import { AppModule } from './../src/app.module'
 
+jest.setTimeout(10000)
+
 describe('AppController (e2e)', () => {
   let app: INestApplication
 
@@ -20,5 +22,21 @@ describe('AppController (e2e)', () => {
       .get('/')
       .expect(200)
       .expect('Hello World!')
+  })
+
+  it('/payments (PUT)', () => {
+    return request(app.getHttpServer())
+      .put('/payments/orders/foobar123')
+      .expect(200)
+      .expect((res) => {
+        const body = res.body
+        if (!body.id) {
+          throw new Error('Unexpected body.id')
+        } else if (!body.orderId || body.orderId !== 'foobar123') {
+          throw new Error('Unexpected body.orderId')
+        } else if (!body.status) {
+          throw new Error('Unexpected body.status')
+        }        
+      })
   })
 })

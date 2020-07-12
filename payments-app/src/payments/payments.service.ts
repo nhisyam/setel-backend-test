@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { PaymentStatus } from './payment.interface'
 
-const MOCK_DELAY_SECONDS = 5*1000
+const MOCK_DELAY_SECONDS = 3*1000
 
 @Injectable()
 export class PaymentsService {
