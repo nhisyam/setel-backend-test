@@ -1,0 +1,9 @@
+app:
+  name: orders-app
+  group: backend
+  container:
+    config:
+      - name: postgres-config
+    env: 
+      - key: DB_SERVER
+        value: postgres

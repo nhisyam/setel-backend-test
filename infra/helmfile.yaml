@@ -1,0 +1,17 @@
+repositories:
+  - name: stable
+    url: https://kubernetes-charts.storage.googleapis.com
+
+releases:
+  - name: postgres
+    chart: ./charts/postgres
+    values:
+      - ./values/postgres.yaml
+  - name: orders-app
+    chart: ./charts/app
+    values:
+      - ./values/orders-app.yaml
+  - name: payments-app
+    chart: ./charts/app
+    values:
+      - ./values/payments-app.yaml
