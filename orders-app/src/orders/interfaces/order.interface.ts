@@ -5,10 +5,7 @@ export enum OrderStatus {
   Delivered = 'delivered'
 }
 
-export interface OrderDto extends OrderPatchDto {
-  id: string
-}
-
-export interface OrderPatchDto {
+export interface OrderDto {
+  id?: string
   status: OrderStatus
 }

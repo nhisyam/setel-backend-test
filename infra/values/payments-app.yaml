@@ -2,6 +2,7 @@ app:
   name: payments-app
   group: backend
   container:
+    port: 3001
     config:
       - name: postgres-config
     env: 

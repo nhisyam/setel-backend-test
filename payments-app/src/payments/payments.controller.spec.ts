@@ -17,4 +17,13 @@ describe('Payments Controller', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined()
   })
+
+  describe('root', () => {
+    it('should return valid dto', async () => {
+      const result = await controller.processOrder('1')
+      expect(result.id).toBeDefined()
+      expect(result.orderId).toBeDefined()
+      expect(result.status).toBeDefined()
+    })
+  })
 })

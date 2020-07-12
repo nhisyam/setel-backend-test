@@ -4,7 +4,6 @@ app:
   replicaCount: 1
   container:
     imagePullPolicy: Never
-    port: 8080
     config: []
     env: 
       - key: key

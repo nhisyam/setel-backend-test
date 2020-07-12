@@ -1,18 +1,20 @@
-import { Injectable } from '@nestjs/common'
-import { PaymentStatus } from './interfaces/payment.interface'
+import { Injectable, Logger } from '@nestjs/common'
+import { PaymentStatus } from './payment.interface'
 
-const MOCK_DELAY_SECONDS = 1*1000
+const MOCK_DELAY_SECONDS = 5*1000
 
 @Injectable()
 export class PaymentsService {
+  private readonly logger = new Logger('PaymentsService')
   private readonly paymentOrderStatuses = new Map<string, PaymentStatus>()
 
-  async processOrder(orderId: string): Promise<PaymentStatus> {
+  async processOrder(orderId: string): Promise<PaymentStatus> {    
     if (this.paymentOrderStatuses.has(orderId)) {
       return this.paymentOrderStatuses.get(orderId)
     }
     const status = this.getPaymentStatus()
     this.paymentOrderStatuses.set(orderId, status)
+    this.logger.log(`Processed order id: ${orderId}, status: ${status}`)
     return this.delay<PaymentStatus>(status)
   }
   

@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm'
-import { OrderStatus } from './order.interface'
+import { OrderStatus } from '../interfaces/order.interface'
 
 @Entity()
 export class Order {

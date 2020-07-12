@@ -3,8 +3,8 @@ export enum PaymentStatus {
   Declined = 'declined'
 }
 
-export interface Payment {
-  id?: string
+export interface PaymentDto {
+  id: string
   orderId: string
   status: PaymentStatus
 }

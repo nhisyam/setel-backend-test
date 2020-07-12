@@ -15,4 +15,14 @@ describe('PaymentsService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined()
   })
+
+  describe('processOrder', () => {
+    describe('if the order has been processed before', () => {
+      it('return same status', async () => {
+        const statusA = await service.processOrder('1')
+        const statusB = await service.processOrder('1')
+        expect(statusA).toEqual(statusB)
+      })
+    })
+  })
 })

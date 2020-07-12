@@ -4,16 +4,16 @@ import { AppService } from './app.service'
 import { OrdersModule } from './orders/orders.module'
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { TypeOrmConfigService } from './orders/type-orm-config.service'
+import { TypeOrmConfig } from './orders/config/type-orm.config'
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['./config/.env.development', './config/.env.production'],
+      envFilePath: ['./config/.env.development.local', './config/.env.development.minikube'],
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
-      useClass: TypeOrmConfigService,
+      useClass: TypeOrmConfig,
     }),
     OrdersModule,
   ],

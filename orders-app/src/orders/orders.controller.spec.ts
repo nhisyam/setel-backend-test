@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { OrdersController } from './orders.controller'
 import { OrdersService } from './orders.service'
-import { PaymentsService } from './payments.service'
+import { PaymentsService } from './services/payments.service'
 import { HttpModule } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
+import { ConfigModule, ConfigService } from '@nestjs/config'
 import { Repository } from 'typeorm'
 
 describe('Orders Controller', () => {
@@ -13,7 +13,7 @@ describe('Orders Controller', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [ConfigModule, HttpModule],
       controllers: [OrdersController],
-      providers: [OrdersService, PaymentsService, {
+      providers: [ConfigService, OrdersService, PaymentsService, {
         provide: 'OrderRepository',
         useClass: Repository
       }]
