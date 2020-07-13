@@ -44,6 +44,17 @@ Build 2 small applications (micro-services) written with any modern NodeJS Frame
 
 ---
 
+## Project Structure
+
+* /infra
+  * contains all helm charts required (tested against minikube)
+* /orders-app
+  * contains the orders application written with NestJs
+* /payments-app
+  * contains the payments application written with NestJs
+* /scripts
+  * contains some useful script files
+
 ## Installation against [minikube](https://minikube.sigs.k8s.io)
 
 ```bash
@@ -53,4 +64,4 @@ $ ./scripts/minikube-deploy.sh
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Author - [Nur Hisyam Mohamed](https://twitter.com/nhisyam)
