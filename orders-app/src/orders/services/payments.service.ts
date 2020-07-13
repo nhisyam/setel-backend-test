@@ -1,4 +1,4 @@
-import { Injectable, HttpService, Logger } from '@nestjs/common'
+import { Injectable, HttpService, Logger, InternalServerErrorException } from '@nestjs/common'
 import { Payment } from '../interfaces/payment.interface'
 import { ConfigService } from '@nestjs/config'
 
@@ -15,6 +15,11 @@ export class PaymentsService {
       .then(response => {
         this.logger.debug(`Received response: ${response.status} ${JSON.stringify(response.data)}`)
         return response.data
+      })
+      .catch(err => {
+        this.logger.error('Failed to call payments-app')
+        this.logger.error(err)
+        throw new InternalServerErrorException()
       })
   }
 }
