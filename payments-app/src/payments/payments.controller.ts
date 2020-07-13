@@ -1,5 +1,5 @@
 import { v4 as uuid } from 'uuid'
-import { Controller, Param, Put } from '@nestjs/common'
+import { Controller, Param, Put, HttpCode } from '@nestjs/common'
 import { PaymentsService } from './payments.service'
 import { PaymentDto } from './payment.interface'
 
@@ -8,6 +8,7 @@ export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService){}
   
   @Put('orders/:id')
+  @HttpCode(201)
   async processOrder(@Param('id') orderId: string): Promise<PaymentDto> {
     const status = await this.paymentsService.processOrder(orderId)
     return {

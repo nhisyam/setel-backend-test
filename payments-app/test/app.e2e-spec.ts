@@ -27,7 +27,8 @@ describe('AppController (e2e)', () => {
   it('/payments (PUT)', () => {
     return request(app.getHttpServer())
       .put('/payments/orders/foobar123')
-      .expect(200)
+      .set('x-token', 'ilovechocolate')
+      .expect(201)
       .expect((res) => {
         const body = res.body
         if (!body.id) {
